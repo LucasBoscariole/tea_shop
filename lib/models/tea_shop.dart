@@ -1,6 +1,7 @@
+import 'package:flutter/material.dart';
 import 'package:tea_shop/models/tea.dart';
 
-class TeaShop {
+class TeaShop extends ChangeNotifier {
   // tea for sale
   final List<Tea> _shop = [
     Tea(name: 'Camomila Tea', price: '8.99', imagePath: 'lib/images/tea.png'),
@@ -21,10 +22,12 @@ class TeaShop {
   // add item to cart
   void addItemToCard(Tea tea) {
     _userCart.add(tea);
+    notifyListeners();
   }
   
   // remove item from cart
-   void removeItemToCard(Tea tea) {
+   void removeItemFromCard(Tea tea) {
     _userCart.remove(tea);
+    notifyListeners();
   }
 }
